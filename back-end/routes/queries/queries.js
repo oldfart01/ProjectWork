@@ -1,5 +1,5 @@
-import express from "express";
 import fs from 'fs';
+import express from "express";
 const router = express.Router();
 
 router.get('/', async (req, res) => {
@@ -13,11 +13,14 @@ router.get('/', async (req, res) => {
 });
 
 
-router.post('/', async (req, res) => {
+router.post('/',  (req, res) => {
+    const { queryArray } = req.body; // Assuming the queryArray is sent in the request body
+    const jsonString = JSON.stringify(queryArray, null, 2);
     try {
-        const { queryArray } = req.body; // Assuming the queryArray is sent in the request body
-        const jsonString = JSON.stringify(queryArray);
+       // const { queryArray } = req.body; // Assuming the queryArray is sent in the request body
+        //const jsonString = JSON.stringify(queryArray);
         fs.writeFileSync('queries.json', jsonString);
+        console.log('query array saved to queries.json');
         res.status(200).send('Query array saved');
     } catch (err) {
         res.status(500).send('Failed to save query array');
