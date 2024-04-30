@@ -24,6 +24,7 @@ import queriesRouter from './routes/queries/queries.js'
 
 const app = express();
 const port = process.env.PORT || 4000; 
+console.log(port);
 
 app.use(express.json());
 

@@ -71,12 +71,14 @@ export function createUrlFromQueryObject(queryObjectWithApiKey) {
     const queryString = new URLSearchParams(queryObjectWithApiKey).toString();
     const url = baseUrl + "?" + queryString;
     return url;
+    console.log(url);
 }
 
 export async function fetchData(url) {
     let data = null;
     try {
         const response = await fetch(url);
+        console.log(response);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
