@@ -58,6 +58,21 @@ export function QueryForm(params) {
                         </select>
                     </div>
 
+
+                    <div>
+                        <label htmlFor="pageSize">Page Size: </label>
+                        <input
+                            type="number"
+                            id="pageSize"
+                            name="pageSize"
+                            min={1}
+                            max={100}
+                            value={params.formObject.pageSize}
+                            onChange={handleChange}
+                        />
+                    </div>
+
+
                 </div>
                 <span style={{ display: "block", backgroundColor: "#eee" }}>
                     <input type="button" value="Submit" onClick={onSubmitClick} />
