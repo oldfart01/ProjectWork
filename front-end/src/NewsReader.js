@@ -76,7 +76,9 @@ export function NewsReader() {
           </div>
           <div className="box">
             <span className='title'>Saved Queries</span>
-            <SavedQueries savedQueries={savedQueries} setQuery={setQuery} />
+            <SavedQueries savedQueries={savedQueries} 
+            selectedQueryName={query.queryName}
+            onQuerySelect={onSavedQuerySelect} />
           </div>
           <div className="box">
             <span className='title'>Articles List</span>
