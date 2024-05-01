@@ -23,7 +23,7 @@ router.post('/authenticate', async (req, res) => {
       const collection = db.collection(collectionName);
       const loginCredentials = req.body;
        // Check if user exists
-        const user = await collection.findOne({ user: loginCredentials.user });
+        const user = await collection.findOne({ "user": loginCredentials.user });
 
       
         if (!user) {
