@@ -17,7 +17,7 @@ router.get('/', async (req, res) => {
 // POST endpoint to save the query array to queries.json
 router.post('/', async (req, res) => {
     try {
-        const { queryArray } = req.body; // Assuming the queryArray is sent in the request body
+        const queryArray = req.body; // Assuming the queryArray is sent in the request body
         const jsonString = JSON.stringify(queryArray, null, 2);
         fs.writeFileSync('queries.json', jsonString);
         console.log('Query array saved to queries.json');
