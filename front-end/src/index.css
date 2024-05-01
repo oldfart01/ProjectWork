@@ -13,7 +13,13 @@ header p{
 
 ol{
   padding-left:20px;
+  margin: 0;
 }
+
+li{
+  padding-left:20px;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -32,17 +38,33 @@ code {
 .parent{
   display:flex;
   flex-direction: row;
+  flex-flow: row wrap;
+  max-width: 100%;
 }
 
 .box{
   border:1px solid black;
   flex:1;
   padding: 5px;
-  max-width: 300px;
+  /* max-width: 300px; */
   font-size: small;
 }
 
+.article-box {
+  border:1px solid black;
+  flex:2;
+  padding: 5px;
+  /* max-width: 300px; */
+  font-size: small;
+  min-width: 400px;
+}
+
 .box span{
+  padding: 3px;
+  text-align: center;
+}
+
+.article-box span{
   padding: 3px;
   text-align: center;
 }
@@ -52,6 +74,16 @@ code {
   display: block;
   background-color: #888;
   color: white;
+}
+
+.sub-title{
+  font-weight: bold;
+  color: black;
+  font-size: x-small;
+}
+
+.query-list{
+  font-size: x-small;
 }
 
 .selected{

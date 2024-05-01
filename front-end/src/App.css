@@ -3,10 +3,10 @@ ol{
 }
 
 .scroll-container {
-  height: 400px; /* Adjust height as needed */
-  width: 300px;
+  max-height: 105px; /* Adjust height as needed */
+  width: 100%;
   overflow-y: scroll;
-  border: 1px solid #ddd; /* Optional border for styling */
+  border: 1px solid #000; /* Optional border for styling */
 }
 
 header,p{

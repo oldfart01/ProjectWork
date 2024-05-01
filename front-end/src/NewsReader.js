@@ -5,6 +5,7 @@ import { SavedQueries } from './SavedQueries';
 import { useState, useEffect } from 'react';
 import { exampleQuery ,exampleData } from './data';
 import { LoginForm } from './LoginForm';
+import { QueryDetails } from './QueryDetails';
 
 export function NewsReader() {
   const [query, setQuery] = useState(exampleQuery); // latest query sent to newsapi
@@ -25,12 +26,28 @@ export function NewsReader() {
     getQueryList();
   }, []);
 
+  // useEffect(() => { // Simulate checking if user is logged in const 
+  //   let isLoggedIn = currentUser !== null; 
+  //   // Load data based on login status 
+  //   if (isLoggedIn) { 
+  //       getNews(query);
+  //       getQueryList();
+  //     } else { 
+  //       setData(exampleData);
+  //       setQuery(exampleQuery);
+  //     }
+  //   }, [query, currentUser]);
+
   async function login() {
     if (currentUser !== null) {
       // logout
+      console.log("logout")
       setCurrentUser(null);
+      // setData(exampleData);
+      // setQuery(exampleQuery);
     } else {
       // login
+      console.log("login")
       try {
         const response = await fetch(urlUsersAuth, {
           method: 'POST',
@@ -116,7 +133,7 @@ export function NewsReader() {
     saveQueryList(newSavedQueries);
     setSavedQueries(newSavedQueries);
     setQuery(queryObject);
-  }
+      }
 
   async function getNews(queryObject) {
     if (!queryObject.q || queryObject.q.trim() === '') {
@@ -144,9 +161,6 @@ export function NewsReader() {
     }
   }
 
-  //function onFormSubmit(queryObject) {
-   // setQuery(queryObject);
-  //}
   return (
   <div>
     <LoginForm login={login}
@@ -154,8 +168,8 @@ export function NewsReader() {
       currentUser={currentUser}
       setCredentials={setCredentials} />
       <div>
-        <section className="parent">
-          <div className="box">
+        <section className="parent"  style={{ width: '100%' }}>
+          <div className="box mb-3">
             <span className='title'>Query Form</span>
             <QueryForm
               currentUser={currentUser}
@@ -163,14 +177,16 @@ export function NewsReader() {
               formObject={queryFormObject}
               submitToParent={onFormSubmit} />
           </div>
-          <div className="box">
+          <div className="box mb-3">
             <span className='title'>Saved Queries</span>
             <SavedQueries savedQueries={savedQueries} 
             selectedQueryName={query.queryName}
             onQuerySelect={onSavedQuerySelect} />
           </div>
-          <div className="box">
+          <div className="article-box mb-6">
             <span className='title'>Articles List</span>
+            <QueryDetails query={query} data={data}/>
+            <br/>
             <Articles query={query} data={data} />
           </div>
         </section>
