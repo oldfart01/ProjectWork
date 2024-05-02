@@ -199,6 +199,11 @@ export function NewsReader() {
     )}
     {!currentUser && (
       <div>
+         <section className="parent"  style={{ width: '100%' }}>
+          <div className="box mb-3">
+            <span className='title'>Query Form</span>
+            
+          </div>
         <div className='box mb-3'>
           <span className='title'>Saved Queries</span>
              <SavedQueries savedQueries={savedQueries} 
@@ -212,6 +217,7 @@ export function NewsReader() {
             <br/>
             <Articles query={query} data={data} />
         </div>
+        </section>
        </div>
     )}  
    </div>
