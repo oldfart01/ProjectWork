@@ -44,19 +44,7 @@ router.post('/authenticate', async (req, res) => {
   } catch (err) {
       res.status(500).json({ error: err.message });
   }
-/*if( result ){
-        if(result.password === loginCredentials.password){
-          res.status(200).send("user passed authentication!")
-        }else{
-          res.status(401).send("unauthorized: bad password");
-        }
-      }else{
-        res.status(401).send("unauthorized: user not found");
-      } 
-    } catch (err) {
-      res.status(400).json({ error: err.message });
-    }*/
-  });
+});
 
 export default router;
 

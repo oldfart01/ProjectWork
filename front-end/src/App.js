@@ -6,7 +6,7 @@ function App() {
   return (
     <div>
       <header>
-        <p>News Reader App</p>
+        <h1 style={{ textAlign: "center" }}>News Reader App</h1>
       </header>
       <NewsReader />
     </div>
