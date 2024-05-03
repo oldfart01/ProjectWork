@@ -96,10 +96,10 @@ export function NewsReader() {
     setQuery(selectedQuery);
    }
   
-   function currentUserMatches(user) {
+   function currentUserMatches() {
     if (currentUser) {
       if (currentUser.user) {
-        if (currentUser.user === user) {
+        if (currentUser.user !== "admin") {
           return true;
         }
       }
@@ -112,8 +112,8 @@ export function NewsReader() {
       alert("Only logged-in users can create new queries!")
       return;
     }
-    if (savedQueries.length >= 3 && currentUserMatches("guest")) {
-      alert("guest users cannot submit new queries once saved query count is 3 or greater!")
+    if (savedQueries.length >= 3 && currentUserMatches()) {
+      alert("only admin users can submit new queries once saved query count is 3 or greater!")
       return;
     }
     let newSavedQueries = [];
