@@ -92,7 +92,6 @@ export function NewsReader() {
   }
 
   function onSavedQuerySelect(selectedQuery) {
-    console.log(selectedQuery)
     setQueryFormObject(selectedQuery);
     setQuery(selectedQuery);
    }
@@ -124,7 +123,6 @@ export function NewsReader() {
         newSavedQueries.push(savedQuery);
       }
     }
-    console.log(JSON.stringify(newSavedQueries));
     saveQueryList(newSavedQueries);
     setSavedQueries(newSavedQueries);
     setQuery(queryObject);
