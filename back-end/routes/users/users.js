@@ -1,9 +1,11 @@
 import express from "express";
 import {client, connect} from './db.js'; 
+
 const dbName = 'usersdb'; 
 const collectionName = 'users';
-connect(); // Connect to MongoDB
 const router = express.Router();
+
+connect(); // Connect to MongoDB
 
 router.get('/', async (req, res) => {
     try {

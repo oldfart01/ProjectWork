@@ -18,24 +18,16 @@ export function NewsReader() {
   const urlQueries = "/queries"; // API endpoint for queries data
   const urlUsersAuth = "/users/authenticate"; // API endpoint for user data
 
- /* useEffect(() => {
-    getNews(query);
-  }, [query]);
-
-  useEffect(() => {
-    getQueryList();
-  }, []);*/
-
-   useEffect(() => { // Simulate checking if user is logged in const 
-     let isLoggedIn = currentUser !== null; 
-     // Load data based on login status 
-     if (isLoggedIn) { 
-         getNews(query);
-         getQueryList();
-       } else { 
-         setQuery(exampleQuery);
-         }
-     }, [query, currentUser]);
+  useEffect(() => { // Simulate checking if user is logged in const 
+    let isLoggedIn = currentUser !== null; 
+    // Load data based on login status 
+    if (isLoggedIn) { 
+      getNews(query);
+      getQueryList();
+    } else { 
+      setQuery(exampleQuery);
+    }
+  }, [query, currentUser]);
 
   async function login() {
     if (currentUser !== null) {
@@ -135,7 +127,7 @@ export function NewsReader() {
     saveQueryList(newSavedQueries);
     setSavedQueries(newSavedQueries);
     setQuery(queryObject);
-      }
+  }
 
   async function getNews(queryObject) {
     if (!queryObject.q || queryObject.q.trim() === '') {
@@ -164,63 +156,59 @@ export function NewsReader() {
   }
 
   return (
-  <div>
-    <LoginForm login={login}
-      credentials={credentials}
-      currentUser={currentUser}
-      setCredentials={setCredentials} />
+    <div>
+      <LoginForm login={login}
+        credentials={credentials}
+        currentUser={currentUser}
+        setCredentials={setCredentials} />
       {currentUser && (
         <div>
-        <section className="parent"  style={{ width: '100%' }}>
-          <div className="box mb-3">
-            <span className='title'>Query Form</span>
-            <QueryForm
-              currentUser={currentUser}
-              setFormObject={setQueryFormObject}
-              formObject={queryFormObject}
-              submitToParent={onFormSubmit}
-               />
-          </div>
-          <div className="box mb-3">
-            <span className='title'>Saved Queries</span>
-            <SavedQueries savedQueries={savedQueries} 
-            selectedQueryName={query.queryName}
-            onQuerySelect={onSavedQuerySelect}
-             />
-          </div>
-          <div className="article-box mb-6">
-            <span className='title'>Articles List</span>
-            <QueryDetails query={query} data={data}/>
-            <br/>
-            <Articles query={query} data={data} />
-          </div>
-        </section>
-      </div>
-    )}
-    {!currentUser && (
-      <div>
-         <section className="parent"  style={{ width: '100%' }}>
-          <div className="box mb-3">
-            <span className='title'>Query Form</span>
-            
-          </div>
-        <div className='box mb-3'>
-          <span className='title'>Saved Queries</span>
-             <SavedQueries savedQueries={savedQueries} 
+          <section className="parent"  style={{ width: '100%' }}>
+            <div className="box mb-3">
+              <span className='title'>Query Form</span>
+              <QueryForm
+                currentUser={currentUser}
+                setFormObject={setQueryFormObject}
+                formObject={queryFormObject}
+                submitToParent={onFormSubmit}/>
+            </div>
+            <div className="box mb-3">
+              <span className='title'>Saved Queries</span>
+              <SavedQueries savedQueries={savedQueries} 
               selectedQueryName={query.queryName}
-              onQuerySelect={onSavedQuerySelect}
-              />
+              onQuerySelect={onSavedQuerySelect}/>
+            </div>
+            <div className="article-box mb-6">
+              <span className='title'>Articles List</span>
+              <QueryDetails query={query} data={data}/>
+              <br/>
+              <Articles query={query} data={data} />
+            </div>
+          </section>
         </div>
-        <div className='article-box mb-6'>
-        <span className='title'>Articles List</span>
-            <QueryDetails query={query} data={data}/>
-            <br/>
-            <Articles query={query} data={data} />
+      )}
+      {!currentUser && (
+        <div>
+          <section className="parent"  style={{ width: '100%' }}>
+            <div className="box mb-3">
+              <span className='title'>Query Form</span>
+            </div>
+            <div className='box mb-3'>
+              <span className='title'>Saved Queries</span>
+              <SavedQueries savedQueries={savedQueries} 
+                selectedQueryName={query.queryName}
+                onQuerySelect={onSavedQuerySelect}/>
+            </div>
+            <div className='article-box mb-6'>
+              <span className='title'>Articles List</span>
+              <QueryDetails query={query} data={data}/>
+              <br/>
+              <Articles query={query} data={data} />
+            </div>
+          </section>
         </div>
-        </section>
-       </div>
-    )}  
-   </div>
+      )}  
+    </div>
   );
 }
 

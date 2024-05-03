@@ -1,8 +1,9 @@
 import express from "express";
 import fetch from "node-fetch";
+
 const router = express.Router();
-//const apiKey = "6f3417e231924ce4abde9eaa87fa200d";
 let apiKey = process.env.API_KEY;
+
 if(!apiKey){
   console.log("Please set the API_KEY environment variable with a valid newsapi.org apiKey and restart the server!");
   process.exit(0);
