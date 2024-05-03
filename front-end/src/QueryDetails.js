@@ -4,7 +4,6 @@ export function QueryDetails({query}) {
   const queryDetails = [];
 
   if(query?.queryName!=='Query11') {
-    console.log("IN IF");
     queryDetails.push(<span className="sub-title">Query Details</span>);
     for (const prop in query) {
       queryDetails.push(
@@ -14,7 +13,6 @@ export function QueryDetails({query}) {
       );
     }
   } else {
-    console.log("IN ELSE");
     return [];
   }
 
